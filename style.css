@@ -1,0 +1,80 @@
+:root {
+	--bgColour: #ffffff;
+	--textColour: #000000;
+
+	--tooltipColour: #404040c8;
+	
+	--techFinished: #10a848;
+}
+
+* {
+	font-family: "Inter";
+	font-size: 12px;
+}
+
+.bTech {
+	width: 40px;
+	height: 40px;
+
+	border: 2px solid var(--textColour);
+
+	text-align: center;
+	font-size: 65%;
+
+	position: relative;
+
+	user-select: none;
+
+	/*
+	background: linear-gradient(
+		-45deg, 
+		var(--bgColour),
+		var(--bgColour) calc(50% - 1px),
+		var(--textColour) calc(50% - 1px),
+		var(--textColour) calc(50% + 1px),
+		var(--bgColour) calc(50% + 1px)
+	);*/
+}
+
+
+.tooltip {
+	position: absolute;
+	top: calc(100% + 10px);
+	left: 0;
+}
+
+.tooltipInner {
+	position: relative;
+
+	background-color: var(--tooltipColour);
+	color: var(--bgColour);
+
+	padding: 4px;
+	border-radius: 3px;
+	border: 0px solid transparent;
+
+	min-width: 200px;
+
+	display: none;
+
+	z-index: 1;
+
+	user-select: none;
+}
+
+.hasTooltip:hover .tooltip:not(:hover) .tooltipInner:not(:hover) {
+	opacity: 1;
+	display: inline-block;
+}
+
+.tooltipInner::after {
+	content: " ";
+
+	border-color: transparent transparent var(--tooltipColour) transparent;
+	border-width: 5px;
+	border-style: solid;
+
+	position: absolute;
+	bottom: 100%;
+	left: 6px;
+}

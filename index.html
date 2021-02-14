@@ -1,0 +1,43 @@
+<html lang = "en">
+	<head>
+		<meta charset = "UTF-8">
+		<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+		<title>idle3.html</title>
+
+		<link href = "https://fonts.googleapis.com/css2?family=Inter&display=swap" rel = "stylesheet">
+		<script src = "js/break_eternity.min.js"></script>
+
+		<script src = "js/classes/Game.js"></script>
+		<script src = "js/classes/BoredomTech.js"></script>
+		
+		<script src = "js/components/tech.js"></script>
+		
+		<script src = "js/save.js"></script>
+		<script src = "js/utils.js"></script>
+		<script src = "js/constants.js"></script>
+		<script src = "js/main.js" defer></script>
+
+		<link href = "style.css" rel = "stylesheet">
+
+		<script src="https://unpkg.com/vue@next"></script>
+	</head>
+
+	<body>
+		<div id = "app">
+			you have {{ f(game.points) }} points<br>
+			next point in {{ formatTime(game.pointReq().minus(game.timeWaited)) }}<br>
+			you have waited {{ formatTime(game.timeWaited) }}<br>
+			time speed is {{ percentify(game.speed) }}% faster than real life time<br><br>
+
+			you have {{ f(game.bp, 4) }} boredom points (+{{ f(game.bps(), 4) }}/s)<br>
+
+			<table>
+				<tr v-for = "(row, i) in game.bTech">
+					<td v-for = "(upgrade, j) in row">
+						<tech :index = "[i,j]" :upgrade = "upgrade"></tech>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
