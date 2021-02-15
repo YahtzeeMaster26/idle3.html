@@ -7,7 +7,7 @@ function gameLoop() {
 	game.speed = game.timeSpeed()
 
 	// points/time
-	game.timeWaited = game.timeWaited.plus(game.speed.times(diff))
+	game.timeWaited = game.timeWaited.plus(game.speed.times(diff).times(game.waitingSpeed()))
 
 	/* will probably have a button instead
 	if (game.timeWaited.gte(game.pointReq())) {
